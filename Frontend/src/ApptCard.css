@@ -1,0 +1,17 @@
+.appt:hover {
+    background-color:#c9f357;
+    text-decoration:none;
+    color:#000000;
+}
+  
+.appt {
+    text-decoration: none;
+    cursor:pointer;
+    background-color:#0000006c;
+    display:block;
+    text-align:center;
+    margin:1vw;
+    padding:2vw;
+    border-radius:5px;
+    color: #FFFFFF;
+}

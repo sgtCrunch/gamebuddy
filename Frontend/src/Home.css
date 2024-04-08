@@ -1,0 +1,11 @@
+.sessions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.add-appt {
+    position: absolute;
+    right: 1vw;
+    top: 1vw;
+}

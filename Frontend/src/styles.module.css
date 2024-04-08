@@ -1,0 +1,158 @@
+
+  .chatContainer {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+    gap: 20px;
+  }
+
+  .avatarCard{
+    background: #000000b0;
+    border-radius: 10px;
+    padding: 10px;
+    font-size: .9em;
+  }
+  
+  /* Room and users component */
+  .roomAndUsersColumn {
+    background: #c9f3566b;
+    padding: 2vw;
+    border-radius: 10px;
+    width: 20vw;
+    height: 60vh;
+    position: relative;
+  }
+
+  .otherUser{
+    text-align: right;
+    margin-left: 30vw;
+  }
+    
+  .roomTitle {
+    margin-bottom: 60px;
+    text-transform: uppercase;
+    font-size: 2rem;
+    color: #fff;
+  }
+  .usersTitle {
+    font-size: 1.2rem;
+    color: #fff;
+  }
+  .usersList {
+    list-style-type: none;
+    padding-left: 0;
+    margin-bottom: 60px;
+    color: rgb(153, 217, 234);
+  }
+  .usersList li {
+    margin-bottom: 12px;
+  }
+  
+  /* Messages */
+  .messagesColumn {
+    display: flex;
+    flex-direction: column;
+    height: 60vh;
+    width: 100%;
+    overflow: auto;
+    padding: 10px 10px 10px 40px;
+    background-color: rgba(0, 0, 0, 0.689);
+    border-radius: 10px;
+  }
+  .message {
+    background: rgb(0 0 0 / 60%);
+    border-radius: 6px;
+    margin-bottom: 24px;
+    padding: 6px;
+    width: 20vw;
+    height: 10vh;
+  }
+  .msgMeta {
+    color: rgb(85 205 150);
+    font-size: 0.67rem;
+    font-weight: 400;
+  }
+  .msgText {
+    color: #fff;
+  }
+  
+  /* Message input and button */
+  .sendMessageContainer {
+    padding: 0px;
+  }
+
+  .messageInput:focus{
+    border: none;
+    outline: none;
+  }
+
+  .sendButton {
+    background: #546624;
+    border: none;
+    color: #3e9b70;
+  }
+
+  .sendButton:hover {
+    background: #687b33;
+  }
+
+  .messageInput {
+    padding: 14px;
+    margin-right: 16px;
+    width: 40vw;
+    border-radius: 6px;
+    border: none;
+    font-size: 0.9rem;
+    font-weight: 400;
+    color: white;
+    background: #87ae46ab;
+  }
+
+  .gameCard {
+    background: #588e754d;
+    border-radius: 10px;
+    padding: 10px;
+    font-size: .9em;
+    margin: 10px;
+    width: 10vw;
+  }
+
+  .gameArea {
+    display: flex;
+    flex-direction: row;
+    height: 60vh;
+    width: 40vw;
+    overflow: auto;
+    padding: 10px;
+    border-radius: 10px;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .gamesButton {
+    font-size: 30px;
+    position: absolute;
+    background: none;
+    right: -1.5vw;
+    top: -3vh;
+  }
+
+  .gamesButton:hover {
+    transform: scale(100,100,100);
+    animation: jiggle 0.5s infinite linear;
+    background: none;
+  }
+
+  @keyframes jiggle {
+    0% {transform: rotate(0deg) scale(1.5,1.5);}
+    50% {transform: rotate(2deg) scale(1.5,1.5);}
+    100% {transform: rotate(-2deg) scale(1.5,1.5)}
+  }
+
+  #player2Style {
+    float: right;
+    text-align: right;
+    background-color: #93c11387;
+  }
