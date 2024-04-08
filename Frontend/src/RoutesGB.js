@@ -17,7 +17,7 @@ function RoutesGB({user, socket, updateUser, updateRoom, updateMsg, showMsg }) {
         <Routes>
             <Route exact path="/" element={<Home user={user} showMsg={showMsg} updateMsg={updateMsg}/>}/>
             <Route exact path="/profile" element={<AvailForm user={user} setUser={updateUser} updateUser={GBApi.updateUser.bind(GBApi)}/>}/>
-            <Route exact path="/login" element={<Login loginUser={GBApi.loginUser.bind(GBApi)} updateUser={updateUser}/>}/>
+            <Route exact path="/login" element={<Login loginUser={GBApi.loginUser.bind(GBApi)} updateUser={updateUser} showMsg={showMsg} updateMsg={updateMsg}/>}/>
             <Route exact path="/logout" element={<Logout logout={GBApi.logout.bind(GBApi)} updateUser={updateUser}/>}/>
             <Route path="/user/:username" element={<UserLoad getUser={GBApi.getUser.bind(GBApi)} updateUser={updateUser}/>}/>
             <Route path="/appts/:id" element={<ApptInfo socket={socket} user={user} updateRoom={updateRoom} updateMsg={updateMsg} showMsg={showMsg} />}/>

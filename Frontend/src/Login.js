@@ -15,7 +15,7 @@ import {
  *
  */
 
-const Login = ({ loginUser, updateUser }) => {
+const Login = ({ loginUser, updateUser, updateMsg, showMsg}) => {
     const [formData, setFormData] = useState({});
 
     const navigate = useNavigate();
@@ -26,7 +26,16 @@ const Login = ({ loginUser, updateUser }) => {
   
     const handleSubmit = async evt => {
       evt.preventDefault();
-      const user = await loginUser();
+      let user = "";
+      try{
+        user = await loginUser();
+      }
+      catch (e) {
+        updateMsg((<h3>{e.message} <br/>Try again later</h3>));
+        showMsg(true);
+        return;
+      }
+      
       window.location.href = user;
     };
 

@@ -29,8 +29,16 @@ class Appt {
       
     player_2 = await this.checkUser(data.player_2);
 
-    this.checkMax(player_1);
-    this.checkMax(player_2);
+    try{
+      console.log("STARTDFLDFJLSDFJ");
+      await this.checkMax(player_1);
+      await this.checkMax(player_2);
+    }
+    catch{
+      console.log("HELLLODFLDFJLSDFJ");
+      return {msg:"Max Appointments Reached"};
+    }
+    
 
     const common_games = await this.commonGames(player_1, player_2);
     const common_times = await this.commonTimes(player_1, player_2);
@@ -38,7 +46,6 @@ class Appt {
     const apptDayTime = _.sample(common_times);
 
     const start_time = this.getNextDayOfTheWeek(apptDayTime.day);
-
     start_time.setUTCHours(apptDayTime.time);
 
     const result = await db.query(
@@ -250,7 +257,6 @@ class Appt {
   /** Given an appt id, return data about an appt.
    *
    * Returns { appt_id, player_1, player_2, start_time, complete, rating }
-   *   where company is { handle, name, description, numEmployees, logoUrl }
    *
    * Throws NotFoundError if not found.
    **/

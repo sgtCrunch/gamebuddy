@@ -83,21 +83,26 @@ router.get("/steam", async (req, res) => {
 router.get("/steam/authenticate", async (req, res, next) => {
   try {
     const user = await steam.authenticate(req);
+    console.log(user);
     if(!user.name) user.name=user.username;
     const newUser = await User.register({ username: user.username, steam_id: user.steamid, name:user.name,
        avatar: user.avatar, max_appt: 3, isAdmin: false });
 
     const gamesURL = `https://api.steampowered.com/IPlayerService/GetOwnedGames/v1/?key=${steamApi}&steamid=${user.steamid}&include_appinfo=true&include_played_free_games=true`
+    console.log(gamesURL);
     request(gamesURL, async (err, response, body) => {
       if(!err && req.statusCode < 400) {
 
         const games = JSON.parse(response.body).response.games;
-        games.forEach(game => {
-          const img_url = `http://media.steampowered.com/steamcommunity/public/images/apps/${game.appid}/${game.img_icon_url}.jpg`
-          game.img_url = img_url;
-          const g = Game.create(game);
-          Game.addOwnedGame({game_id : game.appid, username:newUser.username});
-        });
+        console.log("games " + response.body);
+        if(games){
+          games.forEach(game => {
+            const img_url = `http://media.steampowered.com/steamcommunity/public/images/apps/${game.appid}/${game.img_icon_url}.jpg`
+            game.img_url = img_url;
+            const g = Game.create(game);
+            Game.addOwnedGame({game_id : game.appid, username:newUser.username});
+          });
+        }
         
       }
     });

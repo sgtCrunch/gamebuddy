@@ -61,7 +61,16 @@ class User {
     );
 
     if (duplicateCheck.rows[0]) {
-      return {username, steam_id, name, avatar, max_appt, isAdmin };
+      const querySql = `UPDATE users 
+                      SET username=$1,name=$2,avatar=$3,max_appt=$4 
+                      WHERE steam_id = $5
+                      RETURNING username, 
+                                steam_id,
+                                name,
+                                avatar,
+                                max_appt`;
+      const result = await db.query(querySql, [username, name, avatar, max_appt, steam_id]);
+      return result.rows[0];
     }
 
     //const hashedPassword = await bcrypt.hash(password, BCRYPT_WORK_FACTOR);
@@ -157,9 +166,7 @@ class User {
     
     const userAvailRes = await db.query(query, [username]);
 
-    console.log(userAvailRes.rows);
     let availMat = dicToMat(userAvailRes.rows);
-    console.log(availMat);
 
     return availMat;
   }

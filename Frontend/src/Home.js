@@ -27,8 +27,8 @@ function Home({user, updateMsg, showMsg}) {
     try{
       results = await GBApi.createAppt({player_1:user.username});
     }
-    catch {
-      updateMsg((<h3>{results.appt.msg} <br/>Try again later</h3>));
+    catch (e){
+      updateMsg((<h3>{e.message} <br/>Try again later</h3>));
       showMsg(true);
       return;
     }
